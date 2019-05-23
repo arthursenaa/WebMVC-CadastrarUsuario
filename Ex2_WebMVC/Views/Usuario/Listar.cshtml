@@ -1,0 +1,38 @@
+@using Ex2_WebMVC.Models;
+@{
+    Layout = "MasterPage";
+    ViewBag.Title = "Lista de Usuario";
+}
+
+<div class="container">
+    <br>
+    <h2>@TempData["mensagem"]</h2>
+    <table class="table table-striped">
+        <thead class = "thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Senha</th>
+                <th>Data de Nascimento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var item in ViewData["usuarios"] as List<UsuarioModel>)
+                {
+                    <tr>
+                        <td><strong>@item.Id</strong></td>
+                        <td>@item.Nome</td>
+                        <td>@item.Email</td>
+                        <td>@item.Senha</td>
+                        <td>@item.DataNascimento.ToShortDateString()</td>
+                        <td>
+                            <a href = "/Usuario/Editar?id=@item.Id" class="btn btn-warning">Editar</a>
+                            <a href = "#" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>

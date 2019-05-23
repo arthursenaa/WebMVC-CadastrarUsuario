@@ -1,0 +1,28 @@
+@using Ex2_WebMVC.Models;
+@{
+    Layout = "MasterPage";
+    ViewBag.Title = "Editar Usuario";
+    UsuarioModel usuario = ViewBag.usuarios;
+    string dataNascimento = usuario.DataNascimento.ToString("yyyy-MM-dd");
+}
+<div class = "container">
+    <form action="/Usuario/Editar" method="POST">
+    <h1>Edite seus dados</h1>
+        <div class="form-group">
+            <input type="hidden" value="@usuario.Id" name="id">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="@usuario.Nome" class="form-control">
+            
+            <label for="email">E-Mail:</label>
+            <input type="text" name="email" value="@usuario.Email" class="form-control">
+            
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" value ="@usuario.Senha" class="form-control">
+            
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" name="dataNascimento" value="@dataNascimento" class="form-control">
+            <br>
+            <input type="submit" value="Editar" class="btn btn-secondary btn-lg btn-block">
+        </div>
+    </form>
+</div>
